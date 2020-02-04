@@ -104,3 +104,25 @@ code {
     }
   }
 }
+
+.Controls {
+  position: absolute;
+  right: 20px;
+  bottom: 50px;
+  .IconButton {
+    border: none;
+    padding: 0;
+    background: none;
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    color: #eee;
+    // This is the text-shadow for svg
+    // (But you can't have opacity in color)
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.6));
+    cursor: pointer;
+    &:focus-visible {
+      filter: drop-shadow(0 0 5px rgba(110, 170, 250, 0.7));
+    }
+  }
+}
