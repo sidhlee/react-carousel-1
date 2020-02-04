@@ -19,9 +19,23 @@ function Slides(props) {
   return <ul {...props} />;
 }
 
-function Slide({ title, children, image, isCurrent, position }) {
+function Slide({
+  title,
+  children,
+  image,
+  isCurrent,
+  position,
+  takeFocus
+}) {
+  const ref = useRef();
+  useEffect(() => {
+    if (isCurrent && takeFocus) {
+      ref.current.focus();
+    }
+  });
   return (
     <li
+      ref={ref}
       aria-hidden={!isCurrent}
       className="Slide"
       style={{ backgroundImage: `url(${image})` }}
@@ -99,6 +113,7 @@ function App() {
             children={image.content}
             isCurrent={index === state.currentIndex}
             position={image.position}
+            takeFocus={state.takeFocus}
           />
         ))}
       </Slides>
