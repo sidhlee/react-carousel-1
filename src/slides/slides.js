@@ -24,7 +24,7 @@ const imgData = [
   },
   {
     id: "img1",
-    title: "My ball!",
+    title: "My Ball!",
     content:
       "Dad and Ethan are kicking some balls at Youido Park under the blue sky.",
     position: "top"

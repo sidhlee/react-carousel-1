@@ -19,14 +19,14 @@ function Slides(props) {
   return <ul {...props} />;
 }
 
-function Slide({ title, children, image, isCurrent }) {
+function Slide({ title, children, image, isCurrent, position }) {
   return (
     <li
       aria-hidden={!isCurrent}
       className="Slide"
       style={{ backgroundImage: `url(${image})` }}
     >
-      <div className="SlideContent">
+      <div className={`SlideContent ${position}`}>
         <h2>{title}</h2>
         {children}
       </div>
@@ -89,6 +89,7 @@ function App() {
             title={image.title}
             children={image.content}
             isCurrent={index === state.currentIndex}
+            position={image.position}
           />
         ))}
       </Slides>
