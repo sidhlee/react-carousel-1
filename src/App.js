@@ -1,4 +1,9 @@
-import React from "react";
+import React, {
+  useState,
+  useReducer,
+  useEffect,
+  useRef
+} from "react";
 import "./App.css";
 import {
   FaPlay,
@@ -7,6 +12,7 @@ import {
   FaBackward
 } from "react-icons/fa";
 
+import reducer from "./reducer";
 import slides from "./slides/slides";
 
 function Slides(props) {
@@ -63,6 +69,9 @@ function ProgressBar() {
 }
 
 function App() {
+  // modularize state management
+  // You can use returned dispatch to update state with action objects.
+  let [state, dispatch] = useReducer(reducer);
   return (
     // TODO: refactor - move array mapping into components.
     <div className="App">
