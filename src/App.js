@@ -38,10 +38,10 @@ function SlideNav(props) {
   return <ul className="SlideNav" {...props} />;
 }
 
-function SlideNavItem() {
+function SlideNavItem({ isCurrent, ...props }) {
   return (
     <li className="SlideNavItem">
-      <button>
+      <button {...props} aria-current={isCurrent}>
         <span />
       </button>
     </li>
@@ -78,6 +78,7 @@ function App() {
     takeFocus: false
   };
   let [state, dispatch] = useReducer(reducer, initialState);
+
   return (
     // TODO: refactor - move array mapping into components.
     <div className="App">
@@ -95,7 +96,10 @@ function App() {
       </Slides>
       <SlideNav>
         {slides.map((slide, index) => (
-          <SlideNavItem key={index} />
+          <SlideNavItem
+            key={index}
+            isCurrent={index === state.currentIndex}
+          />
         ))}
       </SlideNav>
       <Controls>
