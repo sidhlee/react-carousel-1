@@ -1,5 +1,11 @@
 import React from "react";
 import "./App.css";
+import {
+  FaPlay,
+  FaPause,
+  FaForward,
+  FaBackward
+} from "react-icons/fa";
 
 import slides from "./slides/slides";
 
@@ -35,6 +41,18 @@ function SlideNavItem() {
   );
 }
 
+function Controls(props) {
+  return <div className="Controls" {...props} />;
+}
+
+function IconButton(props) {
+  return <button {...props} className="IconButton" />;
+}
+
+function SpacerGif({ width }) {
+  return <div style={{ display: "inline-block", width }} />;
+}
+
 function App() {
   return (
     // TODO: refactor - move array mapping into components.
@@ -54,7 +72,13 @@ function App() {
           <SlideNavItem key={index} />
         ))}
       </SlideNav>
-      <div>Controls</div>
+      <Controls>
+        <IconButton children={<FaPause />} />
+        <IconButton children={<FaPlay />} />
+        <SpacerGif width="10px" />
+        <IconButton children={<FaBackward />} />
+        <IconButton children={<FaForward />} />
+      </Controls>
       <div>ProgressBar</div>
       <div>
         This is some accessibility features for SR
