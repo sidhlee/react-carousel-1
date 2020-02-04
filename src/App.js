@@ -26,7 +26,12 @@ function App() {
     <div className="App">
       <Slides>
         {slides.map((image, index) => (
-          <Slide key={index} image={image.img} title={image.title} />
+          <Slide
+            key={index}
+            image={image.img}
+            title={image.title}
+            children={image.content}
+          />
         ))}
       </Slides>
       <div>SlideNav</div>
