@@ -21,8 +21,23 @@ function Slide({ title, children, image }) {
   );
 }
 
+function SlideNav(props) {
+  return <ul className="SlideNav" {...props} />;
+}
+
+function SlideNavItem() {
+  return (
+    <li className="SlideNavItem">
+      <button>
+        <span />
+      </button>
+    </li>
+  );
+}
+
 function App() {
   return (
+    // TODO: refactor - move array mapping into components.
     <div className="App">
       <Slides>
         {slides.map((image, index) => (
@@ -34,7 +49,11 @@ function App() {
           />
         ))}
       </Slides>
-      <div>SlideNav</div>
+      <SlideNav>
+        {slides.map((slide, index) => (
+          <SlideNavItem key={index} />
+        ))}
+      </SlideNav>
       <div>Controls</div>
       <div>ProgressBar</div>
       <div>
