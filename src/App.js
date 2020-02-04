@@ -79,6 +79,14 @@ function App() {
   };
   let [state, dispatch] = useReducer(reducer, initialState);
 
+  useEffect(() => {
+    if (state.isPlaying) {
+      let timeout = setTimeout(() => {
+        dispatch({ type: "PROGRESS" });
+      }, 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [state.currentIndex, state.isPlaying]);
   return (
     // TODO: refactor - move array mapping into components.
     <div className="App">
@@ -99,12 +107,19 @@ function App() {
           <SlideNavItem
             key={index}
             isCurrent={index === state.currentIndex}
+            onClick={() => dispatch({ type: "GOTO", index })}
           />
         ))}
       </SlideNav>
       <Controls>
-        <IconButton children={<FaPause />} />
-        <IconButton children={<FaPlay />} />
+        <IconButton
+          children={<FaPause />}
+          onClick={() => dispatch({ type: "PAUSE" })}
+        />
+        <IconButton
+          children={<FaPlay />}
+          onClick={() => dispatch({ type: "PLAY" })}
+        />
         <SpacerGif width="10px" />
         <IconButton
           onClick={() => dispatch({ type: "PREV" })}

@@ -141,6 +141,12 @@ code {
   }
 }
 
+button:active {
+  position: relative;
+  top: 1px;
+  left: 1px;
+}
+
 .ProgressBar {
   position: absolute;
   bottom: 0;

@@ -24,6 +24,12 @@ export default (state, action) => {
         takeFocus: false,
         isPlaying: true
       };
+    case "PAUSE":
+      return {
+        ...state,
+        takeFocus: false,
+        isPlaying: false
+      };
     case "GOTO":
       return {
         ...state,
