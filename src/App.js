@@ -53,6 +53,15 @@ function SpacerGif({ width }) {
   return <div style={{ display: "inline-block", width }} />;
 }
 
+function ProgressBar() {
+  const progress = 0.7;
+  return (
+    <div className="ProgressBar">
+      <div style={{ width: `${progress * 100}%` }} />
+    </div>
+  );
+}
+
 function App() {
   return (
     // TODO: refactor - move array mapping into components.
@@ -79,7 +88,7 @@ function App() {
         <IconButton children={<FaBackward />} />
         <IconButton children={<FaForward />} />
       </Controls>
-      <div>ProgressBar</div>
+      <ProgressBar />
       <div>
         This is some accessibility features for SR
         <h3>VisuallyHidden</h3>
