@@ -46,7 +46,12 @@ code {
   background-position: center center;
   list-style-type: none;
   transition: opacity 200ms ease;
-  z-index: -1;
+  // we're using this to hide slides
+  &[aria-hidden="true"] {
+    opacity: 0;
+    transition-delay: 200ms;
+    z-index: -1;
+  }
 }
 
 .SlideContent {

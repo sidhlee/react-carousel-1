@@ -19,9 +19,10 @@ function Slides(props) {
   return <ul {...props} />;
 }
 
-function Slide({ title, children, image }) {
+function Slide({ title, children, image, isCurrent }) {
   return (
     <li
+      aria-hidden={!isCurrent}
       className="Slide"
       style={{ backgroundImage: `url(${image})` }}
     >
@@ -71,7 +72,12 @@ function ProgressBar() {
 function App() {
   // modularize state management
   // You can use returned dispatch to update state with action objects.
-  let [state, dispatch] = useReducer(reducer);
+  const initialState = {
+    currentIndex: 0,
+    isPlaying: false,
+    takeFocus: false
+  };
+  let [state, dispatch] = useReducer(reducer, initialState);
   return (
     // TODO: refactor - move array mapping into components.
     <div className="App">
@@ -82,6 +88,7 @@ function App() {
             image={image.img}
             title={image.title}
             children={image.content}
+            isCurrent={index === state.currentIndex}
           />
         ))}
       </Slides>
@@ -94,8 +101,14 @@ function App() {
         <IconButton children={<FaPause />} />
         <IconButton children={<FaPlay />} />
         <SpacerGif width="10px" />
-        <IconButton children={<FaBackward />} />
-        <IconButton children={<FaForward />} />
+        <IconButton
+          onClick={() => dispatch({ type: "PREV" })}
+          children={<FaBackward />}
+        />
+        <IconButton
+          onClick={() => dispatch({ type: "NEXT" })}
+          children={<FaForward />}
+        />
       </Controls>
       <ProgressBar />
       <div>
