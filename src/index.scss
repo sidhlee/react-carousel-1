@@ -134,6 +134,9 @@ code {
     &:focus-visible {
       filter: drop-shadow(0 0 5px rgba(110, 170, 250, 0.7));
     }
+    &:focus {
+      outline: none;
+    }
   }
 }
 
