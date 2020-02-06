@@ -37,7 +37,7 @@ const imgData = [
   },
   {
     id: "img3",
-    title: "Here goes the cannon ball!",
+    title: "Here Goes The Cannon Ball!",
     content: "Ethan is ready to launch his final attack on dad.",
     position: "top"
   },

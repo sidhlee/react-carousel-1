@@ -118,6 +118,7 @@ function App() {
           <SlideNavItem
             key={index}
             isCurrent={index === state.currentIndex}
+            aria-label={`Slide ${index + 1}`}
             onClick={() => dispatch({ type: "GOTO", index })}
           />
         ))}
