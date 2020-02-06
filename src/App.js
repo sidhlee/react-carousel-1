@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useReducer,
-  useEffect,
-  useRef
-} from "react";
+import React, { useReducer, useEffect, useRef } from "react";
 import "./App.css";
 import {
   FaPlay,
@@ -152,11 +147,6 @@ function App() {
         animate={state.isPlaying}
         currentIndex={state.currentIndex}
       />
-      <div>
-        This is some accessibility features for SR
-        <h3>VisuallyHidden</h3>
-        <div>Alert></div>
-      </div>
     </div>
   );
 }
