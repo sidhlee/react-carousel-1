@@ -123,14 +123,17 @@ function App() {
         ))}
       </SlideNav>
       <Controls>
-        <IconButton
-          children={<FaPause />}
-          onClick={() => dispatch({ type: "PAUSE" })}
-        />
-        <IconButton
-          children={<FaPlay />}
-          onClick={() => dispatch({ type: "PLAY" })}
-        />
+        {state.isPlaying ? (
+          <IconButton
+            children={<FaPause />}
+            onClick={() => dispatch({ type: "PAUSE" })}
+          />
+        ) : (
+          <IconButton
+            children={<FaPlay />}
+            onClick={() => dispatch({ type: "PLAY" })}
+          />
+        )}
         <SpacerGif width="10px" />
         <IconButton
           onClick={() => dispatch({ type: "PREV" })}
