@@ -14,6 +14,7 @@ import {
 
 import reducer from "./reducer";
 import slides from "./slides/slides";
+import useProgress from "./useProgress";
 
 function Slides(props) {
   return <ul {...props} />;
@@ -74,8 +75,8 @@ function SpacerGif({ width }) {
   return <div style={{ display: "inline-block", width }} />;
 }
 
-function ProgressBar() {
-  const progress = 0.7;
+function ProgressBar({ animate, time, currentIndex }) {
+  const progress = useProgress(animate, time, currentIndex);
   return (
     <div className="ProgressBar">
       <div style={{ width: `${progress * 100}%` }} />
@@ -145,7 +146,12 @@ function App() {
           children={<FaForward />}
         />
       </Controls>
-      <ProgressBar />
+      <ProgressBar
+        key={state.currentIndex + state.isPaying}
+        time={3000}
+        animate={state.isPlaying}
+        currentIndex={state.currentIndex}
+      />
       <div>
         This is some accessibility features for SR
         <h3>VisuallyHidden</h3>
