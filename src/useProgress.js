@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-let useProgress = (animate, time, currentIndex) => {
+let useProgress = (animate, time) => {
   let [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ let useProgress = (animate, time, currentIndex) => {
       rafId = requestAnimationFrame(step);
       return () => cancelAnimationFrame(rafId);
     }
-  }, [animate, time, currentIndex]); // need currentIndex as diff list to cleanup/re-init progress.
+  }, [animate, time]); // need currentIndex as diff list to cleanup/re-init progress.
 
   return animate ? Math.min(progress / time, time) : 0;
 };

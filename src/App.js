@@ -70,8 +70,8 @@ function SpacerGif({ width }) {
   return <div style={{ display: "inline-block", width }} />;
 }
 
-function ProgressBar({ animate, time, currentIndex }) {
-  const progress = useProgress(animate, time, currentIndex);
+function ProgressBar({ animate, time }) {
+  const progress = useProgress(animate, time);
   return (
     <div className="ProgressBar">
       <div style={{ width: `${progress * 100}%` }} />
@@ -146,7 +146,9 @@ function App() {
         />
       </Controls>
       <ProgressBar
-        key={state.currentIndex + state.isPaying}
+        // key prop forces React to unmount the previous instance and mount a new one
+        // "useEffect" inside component will be cleaned up & re-initialized
+        key={state.currentIndex + state.isPlaying}
         time={3000}
         animate={state.isPlaying}
         currentIndex={state.currentIndex}
